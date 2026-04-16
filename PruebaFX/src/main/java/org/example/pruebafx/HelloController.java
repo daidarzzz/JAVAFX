@@ -10,6 +10,8 @@ import java.io.IOException;
 
 public class HelloController {
 
+    static Contador cont = new Contador();
+
     private static int contador;
 
     @FXML
@@ -24,7 +26,6 @@ public class HelloController {
 
     @FXML
     public void initialize() {
-        Contador cont = new Contador();
         pruebaPulsaBoton.setOnAction(e -> {
             cont.contar();
             contadorLabel.setText(Integer.toString(cont.getContar()));
@@ -37,8 +38,16 @@ public class HelloController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+
     public void siguienteClickButton() throws IOException {
         HelloApplication.setRoot("segunda-view");
+    }
+
+    public void resetButton() {
+
+        cont.resetear();
+        contadorLabel.setText(Integer.toString(cont.getContar()));
+
     }
 }
 
